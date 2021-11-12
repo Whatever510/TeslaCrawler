@@ -4,6 +4,7 @@ from urllib.parse import urljoin
 import re
 from datetime import date, timedelta
 import os
+
 from beautifier import beautify_js
 from compare import generate_diff
 
