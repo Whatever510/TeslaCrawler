@@ -139,7 +139,7 @@ def main():
             return -1
 
         save_file(relevant_text, key)
-        print("[INFO] Relevant text for {} extracted and saved, creating diff-file")
+        print("[INFO] Relevant text for " + key + " extracted and saved, creating diff-file")
 
         if (len(os.listdir("previous_saves/")) <= 4):
             print("[INFO] Extracting was successful, not enough files to create diff yet. \n Please come back tomorrow")
