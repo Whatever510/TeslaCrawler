@@ -4,6 +4,7 @@ from urllib.parse import urljoin
 import re
 from datetime import date, timedelta
 import os
+from prettifier import prettify_string
 
 from beautifier import beautify_js
 from compare import generate_diff
@@ -110,6 +111,28 @@ def create_diff_file(key, past_days = 1):
     generate_diff(today_date_filename, yesterday_date_filename)
 
 
+def prettify_dir(car_model):
+    today = date.today().strftime("%d_%m_%y")
+
+    output_file_name = "previous_saves/"+today + "_" + car_model+".js"
+    line_list = []
+    with open(output_file_name, "r") as file:
+
+        lines = file.readlines()
+        for line in lines:
+            #print(type(line))
+            if "\"DSServices\"" in line:
+                line_list.append(prettify_string(line))
+                continue
+
+                #print(line)
+            line_list.append(line)
+
+
+    with open(output_file_name, "w") as file:
+        file.writelines("".join(line_list))
+
+
 def main():
     #Specify the websites to be crawled. Currently on Tesla Models are supported
     file_dict = {
@@ -139,15 +162,21 @@ def main():
             return -1
 
         save_file(relevant_text, key)
-        print("[INFO] Relevant text for " + key + " extracted and saved, creating diff-file")
-
         if (len(os.listdir("previous_saves/")) <= 4):
             print("[INFO] Extracting was successful, not enough files to create diff yet. \n Please come back tomorrow")
             return -1
-
-        print("[INFO] Creating diff - file")
+            
+        print("[INFO] Relevant text for " + key + " extracted and saved, creating diff-file")
         create_diff_file(key, 2)
+
+        prettify_dir(key)
         print("[SUCCESS] Diff file for " + key + " successfully created. View it in the \"differences/\" folder")
+
+
+
+
+
+
 
     return 0
 

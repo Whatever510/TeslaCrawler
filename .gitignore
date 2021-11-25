@@ -2,3 +2,4 @@ differences/
 previous_saves/
 __pycache__/
 xmlPages/
+prettifier.py
