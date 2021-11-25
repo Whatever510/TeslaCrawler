@@ -1,7 +1,7 @@
 
 
 def prettify_string(in_string):
-    in_string = in_string.replace('\\', '')
+    in_string = in_string.replace('\\', '').replace('/\"','\"')
     out_line = ""
 
     counter_curly = 0

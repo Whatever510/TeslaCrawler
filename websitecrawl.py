@@ -7,7 +7,7 @@ import os
 from prettifier import prettify_string
 
 from beautifier import beautify_js
-from compare import generate_diff
+from compare import generate_diff_custom
 
 """
 # Setting up the workspace by creating the necessary folders
@@ -108,7 +108,7 @@ def create_diff_file(key, past_days = 1):
     today_date_filename = "previous_saves/"+today_date_filename
     yesterday_date_filename = "previous_saves/"+yesterday_date_filename
 
-    generate_diff(today_date_filename, yesterday_date_filename)
+    generate_diff_custom(today_date_filename, yesterday_date_filename)
 
 
 def prettify_dir(car_model):
@@ -165,13 +165,13 @@ def main():
         if (len(os.listdir("previous_saves/")) <= 4):
             print("[INFO] Extracting was successful, not enough files to create diff yet. \n Please come back tomorrow")
             return -1
-            
-        print("[INFO] Relevant text for " + key + " extracted and saved, creating diff-file")
-        create_diff_file(key, 2)
 
         prettify_dir(key)
-        print("[SUCCESS] Diff file for " + key + " successfully created. View it in the \"differences/\" folder")
+        print("[INFO] Relevant text for " + key + " extracted and saved, creating diff-file")
 
+        create_diff_file(key, 1)
+
+        print("[SUCCESS] Diff file for " + key + " successfully created. View it in the \"differences/\" folder")
 
 
 

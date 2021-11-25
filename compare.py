@@ -1,5 +1,6 @@
 from diff_match_patch import diff_match_patch
 from datetime import date
+import difflib
 
 """
 # Generate the difference file for two files and save it
@@ -40,3 +41,25 @@ def generate_diff(filename1, filename2):
 
     with open(outfile_name, "w") as output_file:
         output_file.writelines(dmp.patch_toText(patches))
+
+def generate_diff_custom(filename1, filename2):
+
+    today = date.today().strftime("%d_%m_%y")
+    outfile_name = filename2.split("_")[-1].replace(".js","")
+    outfile_name = "differences/diff_" + outfile_name + "_" + today +".diff"
+
+    with open(filename1, "r") as file1, open(filename2, 'r') as file2:
+
+        lines1 = file1.readlines()
+        lines2 = file2.readlines()
+
+        diff = difflib.unified_diff(lines1, lines2)
+
+
+
+    index = 0
+    with open(outfile_name, "w") as output_file:
+        for line in diff:
+            output_file.writelines(line)
+
+    #same.discard('\n')
