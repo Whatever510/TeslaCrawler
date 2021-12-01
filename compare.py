@@ -53,7 +53,7 @@ def generate_diff_custom(filename1, filename2):
         lines1 = file1.readlines()
         lines2 = file2.readlines()
 
-        diff = difflib.unified_diff(lines1, lines2)
+        diff = difflib.unified_diff(lines2, lines1)
 
 
 
