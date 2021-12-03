@@ -4,3 +4,4 @@ __pycache__/
 xmlPages/
 file.txt
 test.py
+*.js
