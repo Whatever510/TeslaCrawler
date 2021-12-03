@@ -2,7 +2,5 @@ differences/
 previous_saves/
 __pycache__/
 xmlPages/
-prettyString.js
 file.txt
 test.py
-*.js
