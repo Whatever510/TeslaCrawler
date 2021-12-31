@@ -3,5 +3,8 @@ previous_saves/
 __pycache__/
 xmlPages/
 file.txt
-test.py
 *.js
+htmlPages/
+.idea/
+__pycache__
+xmlpull.py

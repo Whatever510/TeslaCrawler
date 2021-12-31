@@ -33,7 +33,7 @@ def extract_urls(soup, url_list, update_list):
 
     for i in range(len(updates)):
         update_string = str(updates[i]).replace("<lastmod>","").replace("</lastmod>","")
-        if (update_string == ""):
+        if update_string == "":
             counter += 1
         update_list.append(update_string)
 
@@ -100,8 +100,6 @@ def save_webpages(url_list):
         response = session.get(url).content
 
         soup = BeautifulSoup(response, "html.parser")
-
-        #soup = soup.prettify()
 
         filename = url.replace("/","_").replace("www.", "").replace(".com","").replace("%","")[8:]
         filename = "xmlPages/"+filename+".html"

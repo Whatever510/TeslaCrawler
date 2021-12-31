@@ -1,8 +1,7 @@
-from datetime import date, timedelta
 import jsbeautifier
 
-def beautify_js(text, filename):
 
+def beautify_js(text, filename):
     opts = jsbeautifier.default_options()
     opts.indent_size = 4
     opts.indent_char = " "
@@ -20,10 +19,9 @@ def beautify_js(text, filename):
     opts.indent_inner_html = False
     opts.comma_first = False
     opts.e4x = False
-    #opts.eol = "\n"
     opts.indent_empty_lines = False
 
-    res = jsbeautifier.beautify(text, opts = opts)
+    res = jsbeautifier.beautify(text, opts=opts)
 
     text_file = open(filename, "w")
     text_file.write(res)

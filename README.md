@@ -1,37 +1,45 @@
 # TeslaCrawler
-Crawl the Tesla configurator website to spot changes in the source code.
+This program pull the source code of the Model S, 3, X and Y configurator and calculates the differences to the 
+previous day. 
 
-##Pull the configurator code
+## Setup
 
-Pull the source code for the 4 Tesla models from the configurator.  
+1. Clone this repository. 
 
-Starting with the second pull the algorithm will create a diff-file to the source code of the previous day.
-### Setup
-Install the necessary requirements
+2. Install the necessary requirements.
 ```
 pip install jsbeautifier
 pip install diff-match-patch
 pip install beautifulsoup4
 pip install urllib3
+pip install PyQt5
 ```
 
 ### Using the code
 1. Clone the Repo
 2. Run:
-
-```
-python websitecrawl.py
-```
 Note: You need the pulls of at least two different days to generate a diff file.
-
-## Pull the website of the sitemap
-
-Tesla has a xml sitemap. The sitemap can be found at [Tesla Sitemap Overview](https://www.tesla.com/sitemap.xml).
-To pull the websites listed in the sitemap run:
-
 ```
-python xmlpull.py
+python main.py
 ```
+- In the GUI select the desired countries. (1)
 
-Note: Certain Websites are skipped, like supercharger location and Websites from certain regions.
-    Pulling takes approximately 60 minutes. The websites are saved in the "xmlPages" Folder. 
+- Press the start button (2).
+- The output will show if differences to the previous day were found.
+
+![Alt text](assets/UI.png?raw=true "GUI")
+![Alt text](assets/output.png?raw=true "GUI")
+
+NOTE: The GUI will freeze during execution. Please wait until it becomes responsive again.
+
+The *differences/* directory contains the generated .diff files for the specified countries.
+If the file is larger than 1kB, there most likely were changes in the configurator.
+
+In the *previous_saves/* directory the relevant source code from the configurator for each country is saved. Please note,
+this code was beautified to enable the difference extraction and is no longer executable. It can be used to gather additional information
+about the changes.
+
+Example of the difference file:
+![Alt text](assets/differences.png?raw=true "GUI")
+
+
