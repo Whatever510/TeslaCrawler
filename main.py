@@ -236,7 +236,7 @@ class Ui(QMainWindow):
                 filename = prefix + "diff_" + model + "_" + today + ".diff"
                 filesize = os.path.getsize(filename)
 
-                if filesize > 1500:
+                if filesize > 1250:
                     output_text += "Possible change in " + key + " " + model + "\n"
 
                 self.label_output.setText(output_text)

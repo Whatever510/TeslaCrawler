@@ -27,7 +27,7 @@ python main.py
 - Press the start button (2).
 - The output will show if differences to the previous day were found.
 
-![Alt text](assets/UI.png?raw=true "GUI")
+![Alt text](assets/Ui.png?raw=true "GUI")
 ![Alt text](assets/output.png?raw=true "GUI")
 
 NOTE: The GUI will freeze during execution. Please wait until it becomes responsive again.
