@@ -240,8 +240,7 @@ class Ui(QMainWindow):
                 if filesize > 1250:
                     output_text += "Possible change in " + key + " " + model + "\n"
 
-                if output_text == "":
-                    output_text = "No Changes found"
+
 
                 self.label_output.setText(output_text)
 
