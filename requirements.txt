@@ -1,0 +1,5 @@
+jsbeautifier
+diff-match-patch
+beautifulsoup4
+urllib3
+PyQt5
