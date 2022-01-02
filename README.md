@@ -8,11 +8,7 @@ previous day.
 
 2. Install the necessary requirements.
 ```
-pip install jsbeautifier
-pip install diff-match-patch
-pip install beautifulsoup4
-pip install urllib3
-pip install PyQt5
+pip3 install -r requirements.txt
 ```
 
 ### Using the code

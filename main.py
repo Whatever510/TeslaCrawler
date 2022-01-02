@@ -9,16 +9,18 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QCheckBox, Q
 import sys
 from definitions import get_country_codes_na, get_country_code_eu, links_eu, links_na
 
-from extractor import start
+from extractor import Extractor
 
 class Ui(QMainWindow):
-
     def __init__(self):
         super(Ui,self).__init__()
         uic.loadUi("Ui/MainWindow.ui", self)
 
         self.all_contry_codes = get_country_codes_na() + get_country_code_eu()
         self.selected_countries = dict.fromkeys(self.all_contry_codes, False)
+
+        self.extractor = Extractor()
+        self.extractor.finished.connect(self.check_if_changed)
 
         self.all_links = {}
         self.all_links.update(links_na)
@@ -76,30 +78,16 @@ class Ui(QMainWindow):
         self.label_output = self.findChild(QLabel, "label_output")
 
 
-
-
-
     def startButtonPressed(self):
-
         counter = 0
-
 
         self.update_checkbox_list()
         self.genereate_links()
 
         if (self.links_to_crawl):
+            self.label_output.setText("Processing ...")
 
-            self.label_output.setText("Processing, expect the UI to freeze ...")
-            self.label_output.repaint()
-
-            #Preparation for multithreading to keep the gui from freezing. Not yet working
-            x = threading.Thread(target=start, args=(self.links_to_crawl,))
-
-            x.start()
-            x.join()
-
-            self.check_if_changed()
-
+            threading.Thread(target=self.extractor.start, args=(self.links_to_crawl,)).start()
         else:
             print("Please select at least one country")
             self.label_output.setText("Please select at least one country")
@@ -113,14 +101,11 @@ class Ui(QMainWindow):
             self.checkbox_all_eu.setChecked(False)
 
     def allSetNAChanged(self):
-
         if self.checkbox_all_na.isChecked():
-
             self.checkbox_us.setChecked(True)
             self.checkbox_mx.setChecked(True)
             self.checkbox_ca.setChecked(True)
             self.checkbox_pr.setChecked(True)
-
         else:
             self.checkbox_us.setChecked(False)
             self.checkbox_us.setChecked(False)
@@ -234,16 +219,18 @@ class Ui(QMainWindow):
             prefix = "differences/"+key +"/"
             for model in models:
                 filename = prefix + "diff_" + model + "_" + today + ".diff"
-                if os.path.exists(filename):
-                    filesize = os.path.getsize(filename)
+                if not os.path.exists(filename):
+                    continue
+
+                filesize = os.path.getsize(filename)
 
                 if filesize > 1250:
                     output_text += "Possible change in " + key + " " + model + "\n"
 
+        if len(output_text) == 0:
+            output_text = 'No changes found.'
 
-
-                self.label_output.setText(output_text)
-
+        self.label_output.setText(output_text)
 
 
 app = QApplication(sys.argv)
