@@ -234,8 +234,10 @@ class Ui(QMainWindow):
             prefix = "differences/"+key +"/"
             for model in models:
                 filename = prefix + "diff_" + model + "_" + today + ".diff"
-                if os.path.exists(filename):
-                    filesize = os.path.getsize(filename)
+                if not os.path.exists(filename):
+                    continue
+
+                filesize = os.path.getsize(filename)
 
                 if filesize > 1250:
                     output_text += "Possible change in " + key + " " + model + "\n"
