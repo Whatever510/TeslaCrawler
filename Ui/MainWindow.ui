@@ -27,7 +27,7 @@
      <string>Select All</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_usa">
+   <widget class="QCheckBox" name="checkBox_na_US">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -40,7 +40,7 @@
      <string>United States</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_canada">
+   <widget class="QCheckBox" name="checkBox_na_CA">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -53,7 +53,7 @@
      <string>Canada</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_mexico">
+   <widget class="QCheckBox" name="checkBox_na_MX">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -66,7 +66,7 @@
      <string>Mexico</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_puerto">
+   <widget class="QCheckBox" name="checkBox_na_PR">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -119,7 +119,7 @@
      <string>Europe</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_belgium">
+   <widget class="QCheckBox" name="checkBox_eu_BE">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -132,7 +132,7 @@
      <string>Belgium</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_czech">
+   <widget class="QCheckBox" name="checkBox_eu_CZ">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -145,7 +145,7 @@
      <string>Czech</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_denmark">
+   <widget class="QCheckBox" name="checkBox_eu_DK">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -158,7 +158,7 @@
      <string>Denmark</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_germany">
+   <widget class="QCheckBox" name="checkBox_eu_DE">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -171,7 +171,7 @@
      <string>Germany</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_greece">
+   <widget class="QCheckBox" name="checkBox_eu_GR">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -184,7 +184,7 @@
      <string>Greece</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_spain">
+   <widget class="QCheckBox" name="checkBox_eu_ES">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -197,7 +197,7 @@
      <string>Spain</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_croatia">
+   <widget class="QCheckBox" name="checkBox_eu_HR">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -210,7 +210,7 @@
      <string>Croatia</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_hungary">
+   <widget class="QCheckBox" name="checkBox_eu_HU">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -223,7 +223,7 @@
      <string>Hungary</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_ireland">
+   <widget class="QCheckBox" name="checkBox_eu_IE">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -236,7 +236,7 @@
      <string>Ireland</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_luxembourg">
+   <widget class="QCheckBox" name="checkBox_eu_LU">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -249,7 +249,7 @@
      <string>Luxembourg</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_netherlands">
+   <widget class="QCheckBox" name="checkBox_eu_NL">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -262,7 +262,7 @@
      <string>Netherlands</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_iceland">
+   <widget class="QCheckBox" name="checkBox_eu_IS">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -275,7 +275,7 @@
      <string>Iceland</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_italy">
+   <widget class="QCheckBox" name="checkBox_eu_IT">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -288,7 +288,7 @@
      <string>Italy</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_norway">
+   <widget class="QCheckBox" name="checkBox_eu_NO">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -301,7 +301,7 @@
      <string>Norway</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_austria">
+   <widget class="QCheckBox" name="checkBox_eu_AT">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -314,7 +314,7 @@
      <string>Austria</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_poland">
+   <widget class="QCheckBox" name="checkBox_eu_PL">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -327,7 +327,7 @@
      <string>Poland</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_portugal">
+   <widget class="QCheckBox" name="checkBox_eu_PT">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -340,7 +340,7 @@
      <string>Portugal</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_romania">
+   <widget class="QCheckBox" name="checkBox_eu_RO">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -353,7 +353,7 @@
      <string>Romania</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_slovenija">
+   <widget class="QCheckBox" name="checkBox_eu_SL">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -366,7 +366,7 @@
      <string>Slovenija</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_switzerland">
+   <widget class="QCheckBox" name="checkBox_eu_CH">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -379,7 +379,7 @@
      <string>Switzerland</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_sweden">
+   <widget class="QCheckBox" name="checkBox_eu_SE">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -392,7 +392,7 @@
      <string>Sweden</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_finnland">
+   <widget class="QCheckBox" name="checkBox_eu_FI">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -405,7 +405,7 @@
      <string>Finnland</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_united_kingdom">
+   <widget class="QCheckBox" name="checkBox_eu_GB">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -418,7 +418,7 @@
      <string>United Kingdom</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_all_north_america">
+   <widget class="QCheckBox" name="checkBox_na">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -431,7 +431,7 @@
      <string>Select All North America</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_all_europe">
+   <widget class="QCheckBox" name="checkBox_eu">
     <property name="geometry">
      <rect>
       <x>420</x>
@@ -477,7 +477,7 @@
      <string>Select one or more countries to monitor</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_france">
+   <widget class="QCheckBox" name="checkBox_eu_FR">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -487,7 +487,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Finnland</string>
+     <string>France</string>
     </property>
    </widget>
    <widget class="QScrollArea" name="scrollArea">
