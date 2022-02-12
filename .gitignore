@@ -8,3 +8,6 @@ htmlPages/
 .idea/
 __pycache__
 xmlpull.py
+mediacrawler.py
+links.txt
+definitions.py
