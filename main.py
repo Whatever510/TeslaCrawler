@@ -12,9 +12,10 @@ import logging
 
 from extractor import Extractor
 
+
 class Ui(QMainWindow):
     def __init__(self):
-        super(Ui,self).__init__()
+        super(Ui, self).__init__()
         uic.loadUi("Ui/MainWindow.ui", self)
 
         self.all_contry_codes = get_country_codes_na() + get_country_code_eu()
@@ -50,7 +51,6 @@ class Ui(QMainWindow):
 
         self.label_output = self.findChild(QLabel, "label_output")
 
-
     def startButtonPressed(self):
         self.start = time.time()
         self.update_checkbox_list()
@@ -62,8 +62,6 @@ class Ui(QMainWindow):
         else:
             print("Please select at least one country")
             self.label_output.setText("Please select at least one country")
-       
-        
 
     def allSetChanged(self, state):
         self.allSetNAChanged(state)
@@ -74,7 +72,6 @@ class Ui(QMainWindow):
         na_checkboxes.append(self.checkbox_all_na)
         for checkbox in na_checkboxes:
             checkbox.setChecked(state == Qt.Checked)
-
 
     def allSetEUChanged(self, state):
         eu_checkboxes = self.findChildren(QCheckBox, QRegularExpression('checkBox_eu_.*'))
@@ -93,11 +90,10 @@ class Ui(QMainWindow):
             links_to_crawl_temp = []
             if self.selected_countries[code]:
                 links_to_crawl_temp.append(self.all_links[code])
-                links_to_crawl_temp.append(self.all_links[code].replace("models","modelx"))
-                links_to_crawl_temp.append(self.all_links[code].replace("models","model3"))
-                links_to_crawl_temp.append(self.all_links[code].replace("models","modely"))
+                links_to_crawl_temp.append(self.all_links[code].replace("models", "modelx"))
+                links_to_crawl_temp.append(self.all_links[code].replace("models", "model3"))
+                links_to_crawl_temp.append(self.all_links[code].replace("models", "modely"))
                 self.links_to_crawl[code] = links_to_crawl_temp
-
 
     def check_if_changed(self):
         today = date.today().strftime("%d_%m_%y")
@@ -105,7 +101,7 @@ class Ui(QMainWindow):
 
         output_text = ""
         for key in self.links_to_crawl:
-            prefix = "differences/"+key +"/"
+            prefix = "differences/" + key + "/"
             for model in models:
                 filename = prefix + "diff_" + model + "_" + today + ".diff"
                 if not os.path.exists(filename):

@@ -167,7 +167,7 @@ def main():
             return -1
 
         save_file(relevant_text, key)
-        if (len(os.listdir("previous_saves/")) <= 4):
+        if len(os.listdir("previous_saves/")) <= 4:
             print("[INFO] Extracting was successful, not enough files to create diff yet. \n Please come back tomorrow")
             return -1
 

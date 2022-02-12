@@ -14,7 +14,7 @@ from PyQt5.QtCore import QObject, pyqtSignal
 differences_dir = "differences"
 previous_dir = "previous_saves"
 
-DEBUG = True
+DEBUG = False
 
 class Extractor(QObject):
     finished = pyqtSignal()
@@ -30,17 +30,16 @@ class Extractor(QObject):
     """
     def setup(self, country_code):
         current_files = os.listdir()
-        if not previous_dir in current_files:
+        if previous_dir not in current_files:
             os.mkdir(previous_dir)
 
-
-        if not differences_dir in current_files:
+        if differences_dir not in current_files:
             os.mkdir(differences_dir)
 
-        if not country_code in os.listdir(differences_dir):
+        if country_code not in os.listdir(differences_dir):
             os.mkdir(os.path.join(differences_dir, country_code))
 
-        if not country_code in os.listdir(previous_dir):
+        if country_code not in os.listdir(previous_dir):
             os.mkdir(os.path.join(previous_dir, country_code))
 
 
@@ -51,12 +50,11 @@ class Extractor(QObject):
     """
     def get_website(self, url):
         session = requests.Session()
-        session.headers["User-Agent"] = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36"
+        session.headers["User-Agent"] = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) " \
+                                        "Chrome/44.0.2403.157 Safari/537.36 "
 
         html = session.get(url).content
-
         soup = bs4(html, "html.parser")
-
         return soup
 
     """
@@ -152,7 +150,7 @@ class Extractor(QObject):
         self.save_file(relevant_text, model, country)
 
         self.prettify_dir(model, country)
-        if (len(os.listdir(os.path.join(previous_dir, country))) <= 4):
+        if len(os.listdir(os.path.join(previous_dir, country))) <= 4:
             return
         else:
             self.create_diff_file(model, country, 1)

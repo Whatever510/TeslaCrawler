@@ -21,5 +21,4 @@ def prettify_string(in_string):
 
         out_line += c
 
-
     return out_line
