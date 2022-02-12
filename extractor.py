@@ -6,14 +6,21 @@ from prettifier import prettify_string
 
 from beautifier import beautify_js
 from compare import generate_diff_custom
+import logging
+import concurrent.futures
 
 from PyQt5.QtCore import QObject, pyqtSignal
 
 differences_dir = "differences"
 previous_dir = "previous_saves"
 
+DEBUG = True
+
 class Extractor(QObject):
     finished = pyqtSignal()
+    if DEBUG:
+        logging.basicConfig(level=logging.INFO)
+        logging.root.setLevel(logging.NOTSET)
 
     def __init__(self):
         super(Extractor, self).__init__()
@@ -67,7 +74,7 @@ class Extractor(QObject):
             text = script.extract()
             length = len(str(text))
 
-            if (length > longest):
+            if length > longest:
                 longest_text = str(text)
                 longest = length
 
@@ -89,7 +96,7 @@ class Extractor(QObject):
     @param key: the model to be processed
     """
     def create_diff_file(self, key, country_code, past_days = 1):
-        today= date.today().strftime("%d_%m_%y")
+        today = date.today().strftime("%d_%m_%y")
         yesterday = (date.today() - timedelta(past_days)).strftime("%d_%m_%y")
 
         today_date_filename = today + "_" + key + ".js"
@@ -106,7 +113,7 @@ class Extractor(QObject):
             print("[INFO] Please try again tomorrow")
             return
 
-        today_date_filename = prefix + "/" +today_date_filename
+        today_date_filename = prefix + "/" + today_date_filename
         yesterday_date_filename = prefix + "/"+yesterday_date_filename
 
         generate_diff_custom(today_date_filename, yesterday_date_filename, country_code)
@@ -115,49 +122,58 @@ class Extractor(QObject):
     def prettify_dir(self, car_model, country_code):
         today = date.today().strftime("%d_%m_%y")
 
-        output_file_name = previous_dir +"/" + country_code +"/" +today + "_" + car_model+".js"
+        output_file_name = previous_dir + "/" + country_code + "/" + today + "_" + car_model+".js"
         line_list = []
         with open(output_file_name, "r") as file:
             lines = file.readlines()
             for line in lines:
-                #print(type(line))
                 if "\"DSServices\"" in line:
                     line_list.append(prettify_string(line))
                     continue
-
-                #print(line)
                 line_list.append(line)
 
         with open(output_file_name, "w") as file:
             file.writelines("".join(line_list))
 
+    def process_urls(self, country, url):
+
+        model = url.split('/')[-2]
+        logging.info("Processing: %s", model)
+        soup = self.get_website(url)
+
+        # Extract the relevant javascript section
+        relevant_text = self.get_js_file(soup)
+
+        # In case the relevant section could not be extracted, abort
+        if not relevant_text:
+            print("[ERROR] Extracting the relevant text failed, aborting")
+            return -1
+
+        self.save_file(relevant_text, model, country)
+
+        self.prettify_dir(model, country)
+        if (len(os.listdir(os.path.join(previous_dir, country))) <= 4):
+            return
+        else:
+            self.create_diff_file(model, country, 1)
+
+    def process_countries(self, input_file, country):
+        self.setup(country)
+        logging.info("Processing: %s", country)
+        args = ((country, url) for url in input_file[country])
+        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as thread_pool:
+            thread_pool.map(lambda p: self.process_urls(*p), args)
 
     def start(self, input_file):
         #Specify the websites to be crawled. Currently on Tesla Models are supported
 
-        for country in input_file:
-            self.setup(country)
-            for url in input_file[country]:
-                print("Processing:", url)
-                model = url.split('/')[-2]
-                print("Processing:", model)
-                soup = self.get_website(url)
+        args_main = ((input_file, country_code) for country_code in input_file)
 
-                #Extract the relevant javascript section
-                relevant_text = self.get_js_file(soup)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=len(input_file)) as main_executor:
+            main_executor.map(lambda t: self.process_countries(*t), args_main)
 
-                #In case the relevant section could not be extracted, abort
-                if not relevant_text:
-                    print("[ERROR] Extracting the relevant text failed, aborting")
-                    return -1
 
-                self.save_file(relevant_text, model, country)
 
-                self.prettify_dir(model, country)
-                if (len(os.listdir(os.path.join(previous_dir, country))) <= 4):
-                    #print("[INFO] Extracting was successful, not enough files to create diff yet. \n Please come back tomorrow")
-                    continue
-                else:
-                    self.create_diff_file(model, country, 1)
+
 
         self.finished.emit()

@@ -5,9 +5,10 @@ import os
 from PyQt5 import uic
 from PyQt5.QtCore import QThreadPool, QRegularExpression, Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QCheckBox, QLabel
-
+import time
 import sys
 from definitions import get_country_codes_na, get_country_code_eu, links_eu, links_na
+import logging
 
 from extractor import Extractor
 
@@ -18,7 +19,8 @@ class Ui(QMainWindow):
 
         self.all_contry_codes = get_country_codes_na() + get_country_code_eu()
         self.selected_countries = dict.fromkeys(self.all_contry_codes, False)
-
+        self.start = 0
+        self.end = 0
         self.extractor = Extractor()
         self.extractor.finished.connect(self.check_if_changed)
 
@@ -50,17 +52,18 @@ class Ui(QMainWindow):
 
 
     def startButtonPressed(self):
-        counter = 0
-
+        self.start = time.time()
         self.update_checkbox_list()
-        self.genereate_links()
+        self.generate_links()
 
-        if (self.links_to_crawl):
+        if self.links_to_crawl:
             self.label_output.setText("Processing ...")
             threading.Thread(target=self.extractor.start, args=(self.links_to_crawl,)).start()
         else:
             print("Please select at least one country")
             self.label_output.setText("Please select at least one country")
+       
+        
 
     def allSetChanged(self, state):
         self.allSetNAChanged(state)
@@ -84,7 +87,7 @@ class Ui(QMainWindow):
         for checkbox in checkboxes:
             self.selected_countries[checkbox.objectName().split('_')[2]] = checkbox.isChecked()
 
-    def genereate_links(self):
+    def generate_links(self):
         self.links_to_crawl = {}
         for code in self.all_contry_codes:
             links_to_crawl_temp = []
@@ -117,6 +120,8 @@ class Ui(QMainWindow):
             output_text = 'No changes found.'
 
         self.label_output.setText(output_text)
+        self.end = time.time()
+        logging.info("Processing done in %d seconds", self.end - self.start)
 
 
 app = QApplication(sys.argv)
