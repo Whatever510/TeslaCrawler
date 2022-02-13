@@ -99,14 +99,10 @@ def create_diff_file(key, past_days=1):
 
     file_list = os.listdir("previous_saves/")
 
-    if today_date_filename not in file_list:
-        print("[ERROR] File for today " + today_date_filename + " does not exist")
+    if today_date_filename not in file_list or yesterday_date_filename not in file_list:
+        print("[ERROR] File for today or tomorrow does not exist")
         return
 
-    if yesterday_date_filename not in file_list:
-        print("[ERROR] File for yesterday " + yesterday_date_filename + " does not exist")
-        print("[INFO] Please try again tomorrow")
-        return
 
     today_date_filename = "previous_saves/" + today_date_filename
     yesterday_date_filename = "previous_saves/" + yesterday_date_filename
