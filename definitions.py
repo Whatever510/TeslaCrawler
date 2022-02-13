@@ -1,3 +1,5 @@
+""" Collection of the necessary links"""
+
 links_na = {
     "US": "https://www.tesla.com/models/design?redirect=no#overview",
     "CA": "https://www.tesla.com/en_CA/models/design?redirect=no#overview",
@@ -36,19 +38,39 @@ links_eu = {
 country_codes_na = ["US", "CA", "MX", "PR"]
 
 country_codes_eu = ["BE", "CZ", "DK", "BE", "DE", "EE",
-                    "GR", "ES", "FR","HR", "IE", "IS",
+                    "GR", "ES", "FR", "HR", "IE", "IS",
                     "IT", "LU", "HU", "NL", "NO", "AT",
                     "PL", "PT", "RO", "SL", "CH", "SE",
                     "FI", "GB"]
 
+
 def get_links_na():
+    """
+    Get the Links for North America.
+    :return: The links for north america.
+    """
     return links_na
 
+
 def get_links_eu():
+    """
+    Get the Links for Europe.
+    :return: The links for europe.
+    """
     return links_eu
 
+
 def get_country_codes_na():
+    """
+    Get the Country Codes for North America.
+    :return: The country codes for North America.
+    """
     return country_codes_na
 
+
 def get_country_code_eu():
+    """
+    Get the Country Codes for europe.
+    :return: The country codes for europe.
+    """
     return country_codes_eu

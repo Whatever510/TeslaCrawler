@@ -1,7 +1,14 @@
+""" This script beautifies a javascript file and makes it human-readable """
 import jsbeautifier
 
 
+
 def beautify_js(text, filename):
+    """
+    Make the JS Section human readable
+    :param text: the text/ string to be beautified
+    :param filename: the file to write to
+    """
     opts = jsbeautifier.default_options()
     opts.indent_size = 4
     opts.indent_char = " "
@@ -22,7 +29,5 @@ def beautify_js(text, filename):
     opts.indent_empty_lines = False
 
     res = jsbeautifier.beautify(text, opts=opts)
-
-    text_file = open(filename, "w")
-    text_file.write(res)
-    text_file.close()
+    with open(filename, "w", encoding="utf-8") as text_file:
+        text_file.write(res)

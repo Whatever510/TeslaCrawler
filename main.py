@@ -1,19 +1,24 @@
+""" Main GUI """
+
+import logging
+import os
+import sys
 import threading
+import time
 from datetime import date
 
-import os
 from PyQt5 import uic
 from PyQt5.QtCore import QThreadPool, QRegularExpression, Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QCheckBox, QLabel
-import time
-import sys
-from definitions import get_country_codes_na, get_country_code_eu, links_eu, links_na
-import logging
 
+from definitions import get_country_codes_na, get_country_code_eu, links_eu, links_na
 from extractor import Extractor
 
 
 class Ui(QMainWindow):
+    """
+    Main Window Class
+    """
     def __init__(self):
         super(Ui, self).__init__()
         uic.loadUi("Ui/MainWindow.ui", self)
@@ -35,23 +40,27 @@ class Ui(QMainWindow):
 
         # Start button
         self.button_start = self.findChild(QPushButton, 'pushButton_start')
-        self.button_start.clicked.connect(self.startButtonPressed)
+        self.button_start.clicked.connect(self.start_button_pressed)
 
         # All Checked:
         self.checkbox_all = self.findChild(QCheckBox, 'checkBox_all')
-        self.checkbox_all.stateChanged.connect(self.allSetChanged)
+        self.checkbox_all.stateChanged.connect(self.all_set_changed)
 
         # All Check NA
         self.checkbox_all_na = self.findChild(QCheckBox, 'checkBox_na')
-        self.checkbox_all_na.stateChanged.connect(self.allSetNAChanged)
+        self.checkbox_all_na.stateChanged.connect(self.all_set_na_changed)
 
         # All Checked EU
         self.checkbox_all_eu = self.findChild(QCheckBox, 'checkBox_eu')
-        self.checkbox_all_eu.stateChanged.connect(self.allSetEUChanged)
+        self.checkbox_all_eu.stateChanged.connect(self.all_set_eu_changed)
 
         self.label_output = self.findChild(QLabel, "label_output")
 
-    def startButtonPressed(self):
+    def start_button_pressed(self):
+        """
+        Process Start Button Event.
+        :return:
+        """
         self.start = time.time()
         self.update_checkbox_list()
         self.generate_links()
@@ -63,28 +72,51 @@ class Ui(QMainWindow):
             print("Please select at least one country")
             self.label_output.setText("Please select at least one country")
 
-    def allSetChanged(self, state):
-        self.allSetNAChanged(state)
-        self.allSetEUChanged(state)
+    def all_set_changed(self, state):
+        """
+        Change the state of all selected countries
+        :param state: the state to change to
+        :return:
+        """
+        self.all_set_na_changed(state)
+        self.all_set_eu_changed(state)
 
-    def allSetNAChanged(self, state):
+    def all_set_na_changed(self, state):
+        """
+        CHange the state of all NA countries.
+        :param state: the state to change to.
+        :return:
+        """
         na_checkboxes = self.findChildren(QCheckBox, QRegularExpression('checkBox_na_.*'))
         na_checkboxes.append(self.checkbox_all_na)
         for checkbox in na_checkboxes:
             checkbox.setChecked(state == Qt.Checked)
 
-    def allSetEUChanged(self, state):
+    def all_set_eu_changed(self, state):
+        """
+        Change the state of all EU countries
+        :param state: the state to change to
+        :return:
+        """
         eu_checkboxes = self.findChildren(QCheckBox, QRegularExpression('checkBox_eu_.*'))
         eu_checkboxes.append(self.checkbox_all_eu)
         for checkbox in eu_checkboxes:
             checkbox.setChecked(state == Qt.Checked)
 
     def update_checkbox_list(self):
+        """
+        Update the checkbox list
+        :return:
+        """
         checkboxes = self.findChildren(QCheckBox, QRegularExpression('checkBox_.*_.*'))
         for checkbox in checkboxes:
             self.selected_countries[checkbox.objectName().split('_')[2]] = checkbox.isChecked()
 
     def generate_links(self):
+        """
+        Generate the links for the selected countries
+        :return:
+        """
         self.links_to_crawl = {}
         for code in self.all_contry_codes:
             links_to_crawl_temp = []
@@ -96,6 +128,10 @@ class Ui(QMainWindow):
                 self.links_to_crawl[code] = links_to_crawl_temp
 
     def check_if_changed(self):
+        """
+        Check if changes have happened to the previous day.
+        :return:
+        """
         today = date.today().strftime("%d_%m_%y")
         models = ["models", "modelx", "model3", "modely"]
 
