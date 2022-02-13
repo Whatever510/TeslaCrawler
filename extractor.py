@@ -171,6 +171,7 @@ class Extractor(QObject):
         if not len(os.listdir(os.path.join(PREVIOUS_SAVES_DIR, country))) <= 4:
             self.create_diff_file(model, country, 1)
             return 0
+        return -1
 
     def process_countries(self, input_file, country):
         """
