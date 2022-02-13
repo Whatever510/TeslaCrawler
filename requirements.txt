@@ -1,5 +1,7 @@
-jsbeautifier
+jsbeautifier~=1.14.0
 diff-match-patch
-beautifulsoup4
+beautifulsoup4~=4.9.3
 urllib3
-PyQt5
+PyQt5~=5.15.6
+
+requests~=2.24.0
