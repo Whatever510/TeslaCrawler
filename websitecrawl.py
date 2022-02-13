@@ -155,7 +155,7 @@ def main():
     # Iterate over the different Tesla Models
     for entry in file_dict.items():
         print("[INFO] Processing " + entry[0])
-        value = file_dict[entry[0]]
+        value = entry[1]
 
         url = value
         soup = get_website(url)
