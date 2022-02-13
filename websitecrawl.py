@@ -10,6 +10,7 @@ from beautifier import beautify_js
 from compare import generate_diff_custom
 from prettifier import prettify_string
 
+# pylint: disable=W,C,R
 
 def setup():
     """
