@@ -1,5 +1,13 @@
 [MASTER]
+    ignore=PyQt5
 
-ignore=PyQt5
+[DESIGN]
+    max-attributes=13
 
-ignore-patters=websitecrawl.py
+[MESSAGES CONTROL]
+    disable=
+        no-name-in-module
+
+
+
+

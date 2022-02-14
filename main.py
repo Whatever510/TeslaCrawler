@@ -8,9 +8,9 @@ import time
 from datetime import date
 
 from PyQt5 import uic
-from PyQt5.QtCore import QThreadPool, QRegularExpression, Qt  # pylint: disable=no-name-in-module
+from PyQt5.QtCore import QThreadPool, QRegularExpression, Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow,\
-    QPushButton, QCheckBox, QLabel # pylint: disable=no-name-in-module
+    QPushButton, QCheckBox, QLabel
 
 from definitions import get_country_codes_na, get_country_code_eu, links_eu, links_na
 from extractor import Extractor
@@ -21,11 +21,11 @@ class Ui(QMainWindow):
     Main Window Class
     """
     def __init__(self):
-        super(Ui, self).__init__()
+        super().__init__()
         uic.loadUi("Ui/MainWindow.ui", self)
 
-        self.all_contry_codes = get_country_codes_na() + get_country_code_eu()
-        self.selected_countries = dict.fromkeys(self.all_contry_codes, False)
+        self.all_country_codes = get_country_codes_na() + get_country_code_eu()
+        self.selected_countries = dict.fromkeys(self.all_country_codes, False)
         self.start = 0
         self.end = 0
         self.extractor = Extractor()
@@ -119,7 +119,7 @@ class Ui(QMainWindow):
         :return:
         """
         self.links_to_crawl = {}
-        for code in self.all_contry_codes:
+        for code in self.all_country_codes:
             links_to_crawl_temp = []
             if self.selected_countries[code]:
                 links_to_crawl_temp.append(self.all_links[code])

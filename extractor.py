@@ -6,10 +6,10 @@ import os
 from datetime import date, timedelta
 
 import requests
-from PyQt5.QtCore import QObject, pyqtSignal # pylint: disable=no-name-in-module
+from PyQt5.QtCore import QObject, pyqtSignal
 from bs4 import BeautifulSoup as bs4
 
-from beautifier import beautify_js  # pylint: disable: import-error
+from beautifier import beautify_js
 from compare import generate_diff_custom
 from prettifier import prettify_string
 
@@ -25,7 +25,7 @@ class Extractor(QObject):
 
 
     def __init__(self):
-        super(Extractor, self).__init__()
+        super().__init__()
         if DEBUG:
             logging.basicConfig(level=logging.INFO)
             logging.root.setLevel(logging.NOTSET)
