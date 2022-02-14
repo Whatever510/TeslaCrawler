@@ -6,10 +6,10 @@ import os
 from datetime import date, timedelta
 
 import requests
-from PyQt5.QtCore import QObject, pyqtSignal
+from PyQt5.QtCore import QObject, pyqtSignal # pylint: disable=no-name-in-module
 from bs4 import BeautifulSoup as bs4
 
-from beautifier import beautify_js
+from beautifier import beautify_js  # pylint: disable: import-error
 from compare import generate_diff_custom
 from prettifier import prettify_string
 
@@ -30,7 +30,8 @@ class Extractor(QObject):
             logging.basicConfig(level=logging.INFO)
             logging.root.setLevel(logging.NOTSET)
 
-    def setup(self, country_code):
+    @staticmethod
+    def setup(country_code):
         """
         Setup the necessary folders
         :param country_code: The country code, will be the name of the folder.
@@ -48,7 +49,8 @@ class Extractor(QObject):
         if country_code not in os.listdir(PREVIOUS_SAVES_DIR):
             os.mkdir(os.path.join(PREVIOUS_SAVES_DIR, country_code))
 
-    def get_website(self, url):
+    @staticmethod
+    def get_website(url):
         """
         Get the source code from the specified website.
         :param url: url The url to be crawled
@@ -62,7 +64,8 @@ class Extractor(QObject):
         soup = bs4(html, "html.parser")
         return soup
 
-    def get_js_file(self, soup):
+    @staticmethod
+    def get_js_file(soup):
         """
         Extract the javascript content of the given website/ soup object
         :param soup: The previously extracted soup object
@@ -83,7 +86,8 @@ class Extractor(QObject):
 
         return longest_text
 
-    def save_file(self, relevant_text, car_model, country_code):
+    @staticmethod
+    def save_file(relevant_text, car_model, country_code):
         """
         Beautify the relevant text and save it to as js file
         :param relevant_text: The text to be beautified
@@ -95,8 +99,8 @@ class Extractor(QObject):
                            today + "_" + car_model + ".js"
         beautify_js(relevant_text, output_file_name)
 
-
-    def create_diff_file(self, key, country_code, past_days=1):
+    @staticmethod
+    def create_diff_file(key, country_code, past_days=1):
         """
         Create the diff file for the saved JS of today and yesterday
         :param key: the model to be processed
@@ -125,7 +129,8 @@ class Extractor(QObject):
 
         generate_diff_custom(today_date_filename, yesterday_date_filename, country_code)
 
-    def prettify_dir(self, car_model, country_code):
+    @staticmethod
+    def prettify_dir(car_model, country_code):
         """
         Prettify the directory
         :param car_model: the car model

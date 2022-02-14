@@ -15,13 +15,11 @@ def generate_diff_custom(filename1, filename2, country_code=""):
     outfile_name = filename2.split("_")[-1].replace(".js", "")
     outfile_name = "differences/" + country_code + "/diff_" + outfile_name + "_" + today + ".diff"
 
-    with open(filename1, "r", encoding="utf-8") as file1,\
-            open(filename2, 'r', encoding="utf-8") as file2:
+    with open(filename1, "r", encoding="utf-8") as file1, \
+            open(filename2, 'r', encoding="utf-8") as file2, \
+            open(outfile_name, "w", encoding="utf-8") as output_file:
         lines1 = file1.readlines()
         lines2 = file2.readlines()
 
         diff = difflib.unified_diff(lines2, lines1)
-
-    with open(outfile_name, "w", encoding="utf-8") as output_file:
-        for line in diff:
-            output_file.writelines(line)
+        output_file.writelines(diff)

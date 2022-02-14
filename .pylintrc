@@ -1,0 +1,5 @@
+[MASTER]
+
+ignore=PyQt5
+
+ignore-patters=websitecrawl.py

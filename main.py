@@ -8,8 +8,9 @@ import time
 from datetime import date
 
 from PyQt5 import uic
-from PyQt5.QtCore import QThreadPool, QRegularExpression, Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QCheckBox, QLabel
+from PyQt5.QtCore import QThreadPool, QRegularExpression, Qt  # pylint: disable=no-name-in-module
+from PyQt5.QtWidgets import QApplication, QMainWindow,\
+    QPushButton, QCheckBox, QLabel # pylint: disable=no-name-in-module
 
 from definitions import get_country_codes_na, get_country_code_eu, links_eu, links_na
 from extractor import Extractor
