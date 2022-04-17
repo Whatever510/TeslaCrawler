@@ -31,7 +31,6 @@ python main.py
 ![Alt text](assets/Ui.png?raw=true "GUI")
 ![Alt text](assets/output.png?raw=true "GUI")
 
-NOTE: The GUI will freeze during execution. Please wait until it becomes responsive again.
 
 The *differences/* directory contains the generated .diff files for the specified countries. If the file is larger than
 1kB, there most likely were changes in the configurator.
