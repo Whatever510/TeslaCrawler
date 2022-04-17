@@ -21,6 +21,7 @@ class Ui(QMainWindow):
     """
     Main Window Class
     """
+    # pylint: disable=too-many-instance-attributes
     def __init__(self):
         super().__init__()
         uic.loadUi("Ui/MainWindow.ui", self)
