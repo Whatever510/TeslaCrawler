@@ -35,6 +35,11 @@ links_eu = {
     "GB": "https://www.tesla.com/en_GB/models/design?redirect=no#overview"
 }
 
+links_apac = {
+    "AU": "https://www.tesla.com/en_AU/models/design?redirect=no#overview",
+    "NZ": "https://www.tesla.com/en_NZ/models/design?redirect=no#overview"
+}
+
 country_codes_na = ["US", "CA", "MX", "PR"]
 
 country_codes_eu = ["BE", "CZ", "DK", "BE", "DE", "EE",
@@ -42,6 +47,8 @@ country_codes_eu = ["BE", "CZ", "DK", "BE", "DE", "EE",
                     "IT", "LU", "HU", "NL", "NO", "AT",
                     "PL", "PT", "RO", "SL", "CH", "SE",
                     "FI", "GB"]
+
+country_codes_apac = ["AU", "NZ"]
 
 
 def get_links_na():
@@ -59,6 +66,13 @@ def get_links_eu():
     """
     return links_eu
 
+def get_links_apac():
+    """
+    Get the Links for Asia Pacific.
+    :return: The links for Asia Pacific.
+    """
+    return links_apac
+
 
 def get_country_codes_na():
     """
@@ -74,3 +88,10 @@ def get_country_code_eu():
     :return: The country codes for europe.
     """
     return country_codes_eu
+
+def get_country_codes_apac():
+    """
+    Get the Country Codes for Asia Pacific.
+    :return: The country codes for Asia Pacific.
+    """
+    return country_codes_apac

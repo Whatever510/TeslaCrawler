@@ -12,7 +12,8 @@ from PyQt5.QtCore import QThreadPool, QRegularExpression, Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow,\
     QPushButton, QCheckBox, QLabel
 
-from definitions import get_country_codes_na, get_country_code_eu, links_eu, links_na
+from definitions import get_country_codes_na, get_country_code_eu, get_country_codes_apac,\
+    links_eu, links_na, links_apac
 from extractor import Extractor
 
 
@@ -24,7 +25,8 @@ class Ui(QMainWindow):
         super().__init__()
         uic.loadUi("Ui/MainWindow.ui", self)
 
-        self.all_country_codes = get_country_codes_na() + get_country_code_eu()
+        self.all_country_codes = get_country_codes_na() + get_country_code_eu()\
+                                 + get_country_codes_apac()
         self.selected_countries = dict.fromkeys(self.all_country_codes, False)
         self.start = 0
         self.end = 0
@@ -34,6 +36,7 @@ class Ui(QMainWindow):
         self.all_links = {}
         self.all_links.update(links_na)
         self.all_links.update(links_eu)
+        self.all_links.update(links_apac)
 
         self.threadpool = QThreadPool()
 
@@ -54,6 +57,10 @@ class Ui(QMainWindow):
         # All Checked EU
         self.checkbox_all_eu = self.findChild(QCheckBox, 'checkBox_eu')
         self.checkbox_all_eu.stateChanged.connect(self.all_set_eu_changed)
+
+        # All Checked APAC
+        self.checkbox_all_apac = self.findChild(QCheckBox, 'checkBox_apac')
+        self.checkbox_all_apac.stateChanged.connect(self.all_set_apac_changed)
 
         self.label_output = self.findChild(QLabel, "label_output")
 
@@ -81,6 +88,7 @@ class Ui(QMainWindow):
         """
         self.all_set_na_changed(state)
         self.all_set_eu_changed(state)
+        self.all_set_apac_changed(state)
 
     def all_set_na_changed(self, state):
         """
@@ -102,6 +110,17 @@ class Ui(QMainWindow):
         eu_checkboxes = self.findChildren(QCheckBox, QRegularExpression('checkBox_eu_.*'))
         eu_checkboxes.append(self.checkbox_all_eu)
         for checkbox in eu_checkboxes:
+            checkbox.setChecked(state == Qt.Checked)
+
+    def all_set_apac_changed(self, state):
+        """
+        Change the state of all APAC countries
+        :param state: the state to change to
+        :return:
+        """
+        apac_checkboxes = self.findChildren(QCheckBox, QRegularExpression('checkBox_apac_.*'))
+        apac_checkboxes.append(self.checkbox_all_apac)
+        for checkbox in apac_checkboxes:
             checkbox.setChecked(state == Qt.Checked)
 
     def update_checkbox_list(self):

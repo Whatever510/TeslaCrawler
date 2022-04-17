@@ -1,369 +1,415 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-    <class>MainWindow</class>
-    <widget class="QMainWindow" name="MainWindow">
-        <property name="geometry">
-            <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>479</width>
-                <height>613</height>
-            </rect>
-        </property>
-        <property name="windowTitle">
-            <string>TeslaWebsiteChecker</string>
-        </property>
-        <widget class="QWidget" name="centralwidget">
-            <layout class="QVBoxLayout" name="verticalLayout_3">
-                <item>
-                    <widget class="QLabel" name="label_3">
-                        <property name="font">
-                            <font>
-                                <pointsize>12</pointsize>
-                                <weight>50</weight>
-                                <bold>false</bold>
-                            </font>
-                        </property>
-                        <property name="text">
-                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Select
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>752</width>
+    <height>613</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>TeslaWebsiteChecker</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <widget class="QLabel" name="label_3">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Select
                                 one or more countries to monitor&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                             </string>
-                        </property>
-                    </widget>
-                </item>
-                <item>
-                    <widget class="QCheckBox" name="checkBox_all">
-                        <property name="text">
-                            <string>Select All</string>
-                        </property>
-                    </widget>
-                </item>
-                <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_2">
-                        <item>
-                            <widget class="QGroupBox" name="groupBox_2">
-                                <property name="title">
-                                    <string>North America</string>
-                                </property>
-                                <layout class="QVBoxLayout" name="verticalLayout_2">
-                                    <item>
-                                        <widget class="QCheckBox" name="checkBox_na">
-                                            <property name="text">
-                                                <string>Select All North America</string>
-                                            </property>
-                                        </widget>
-                                    </item>
-                                    <item>
-                                        <widget class="QCheckBox" name="checkBox_na_US">
-                                            <property name="text">
-                                                <string>United States</string>
-                                            </property>
-                                        </widget>
-                                    </item>
-                                    <item>
-                                        <widget class="QCheckBox" name="checkBox_na_CA">
-                                            <property name="text">
-                                                <string>Canada</string>
-                                            </property>
-                                        </widget>
-                                    </item>
-                                    <item>
-                                        <widget class="QCheckBox" name="checkBox_na_MX">
-                                            <property name="text">
-                                                <string>Mexico</string>
-                                            </property>
-                                        </widget>
-                                    </item>
-                                    <item>
-                                        <widget class="QCheckBox" name="checkBox_na_PR">
-                                            <property name="text">
-                                                <string>Puerto Rico</string>
-                                            </property>
-                                        </widget>
-                                    </item>
-                                    <item>
-                                        <spacer name="verticalSpacer_2">
-                                            <property name="orientation">
-                                                <enum>Qt::Vertical</enum>
-                                            </property>
-                                            <property name="sizeHint" stdset="0">
-                                                <size>
-                                                    <width>20</width>
-                                                    <height>40</height>
-                                                </size>
-                                            </property>
-                                        </spacer>
-                                    </item>
-                                </layout>
-                            </widget>
-                        </item>
-                        <item>
-                            <widget class="QGroupBox" name="groupBox">
-                                <property name="title">
-                                    <string>Europe</string>
-                                </property>
-                                <layout class="QVBoxLayout" name="verticalLayout">
-                                    <item>
-                                        <widget class="QCheckBox" name="checkBox_eu">
-                                            <property name="text">
-                                                <string>Select All Europe</string>
-                                            </property>
-                                        </widget>
-                                    </item>
-                                    <item>
-                                        <layout class="QGridLayout" name="gridLayout">
-                                            <item row="0" column="0">
-                                                <widget class="QCheckBox" name="checkBox_eu_AT">
-                                                    <property name="text">
-                                                        <string>Austria</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="0" column="1">
-                                                <widget class="QCheckBox" name="checkBox_eu_IT">
-                                                    <property name="text">
-                                                        <string>Italy</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="1" column="0">
-                                                <widget class="QCheckBox" name="checkBox_eu_BE">
-                                                    <property name="text">
-                                                        <string>Belgium</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="1" column="1">
-                                                <widget class="QCheckBox" name="checkBox_eu_LU">
-                                                    <property name="text">
-                                                        <string>Luxembourg</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="2" column="0">
-                                                <widget class="QCheckBox" name="checkBox_eu_HR">
-                                                    <property name="text">
-                                                        <string>Croatia</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="2" column="1">
-                                                <widget class="QCheckBox" name="checkBox_eu_NL">
-                                                    <property name="text">
-                                                        <string>Netherlands</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="3" column="0">
-                                                <widget class="QCheckBox" name="checkBox_eu_CZ">
-                                                    <property name="text">
-                                                        <string>Czech</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="3" column="1">
-                                                <widget class="QCheckBox" name="checkBox_eu_NO">
-                                                    <property name="text">
-                                                        <string>Norway</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="4" column="0">
-                                                <widget class="QCheckBox" name="checkBox_eu_DK">
-                                                    <property name="text">
-                                                        <string>Denmark</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="4" column="1">
-                                                <widget class="QCheckBox" name="checkBox_eu_PL">
-                                                    <property name="text">
-                                                        <string>Poland</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="5" column="0">
-                                                <widget class="QCheckBox" name="checkBox_eu_FI">
-                                                    <property name="text">
-                                                        <string>Finnland</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="5" column="1">
-                                                <widget class="QCheckBox" name="checkBox_eu_PT">
-                                                    <property name="text">
-                                                        <string>Portugal</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="6" column="0">
-                                                <widget class="QCheckBox" name="checkBox_eu_FR">
-                                                    <property name="text">
-                                                        <string>France</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="6" column="1">
-                                                <widget class="QCheckBox" name="checkBox_eu_RO">
-                                                    <property name="text">
-                                                        <string>Romania</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="7" column="0">
-                                                <widget class="QCheckBox" name="checkBox_eu_DE">
-                                                    <property name="text">
-                                                        <string>Germany</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="7" column="1">
-                                                <widget class="QCheckBox" name="checkBox_eu_SL">
-                                                    <property name="text">
-                                                        <string>Slovenija</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="8" column="0">
-                                                <widget class="QCheckBox" name="checkBox_eu_GR">
-                                                    <property name="text">
-                                                        <string>Greece</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="8" column="1">
-                                                <widget class="QCheckBox" name="checkBox_eu_ES">
-                                                    <property name="text">
-                                                        <string>Spain</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="9" column="0">
-                                                <widget class="QCheckBox" name="checkBox_eu_HU">
-                                                    <property name="text">
-                                                        <string>Hungary</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="9" column="1">
-                                                <widget class="QCheckBox" name="checkBox_eu_SE">
-                                                    <property name="text">
-                                                        <string>Sweden</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="10" column="0">
-                                                <widget class="QCheckBox" name="checkBox_eu_IS">
-                                                    <property name="text">
-                                                        <string>Iceland</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="10" column="1">
-                                                <widget class="QCheckBox" name="checkBox_eu_CH">
-                                                    <property name="text">
-                                                        <string>Switzerland</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="11" column="0">
-                                                <widget class="QCheckBox" name="checkBox_eu_IE">
-                                                    <property name="text">
-                                                        <string>Ireland</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                            <item row="11" column="1">
-                                                <widget class="QCheckBox" name="checkBox_eu_GB">
-                                                    <property name="text">
-                                                        <string>United Kingdom</string>
-                                                    </property>
-                                                </widget>
-                                            </item>
-                                        </layout>
-                                    </item>
-                                </layout>
-                            </widget>
-                        </item>
-                    </layout>
-                </item>
-                <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_3">
-                        <item>
-                            <widget class="QPushButton" name="pushButton_start">
-                                <property name="text">
-                                    <string>Start</string>
-                                </property>
-                            </widget>
-                        </item>
-                        <item>
-                            <spacer name="horizontalSpacer">
-                                <property name="orientation">
-                                    <enum>Qt::Horizontal</enum>
-                                </property>
-                                <property name="sizeHint" stdset="0">
-                                    <size>
-                                        <width>40</width>
-                                        <height>20</height>
-                                    </size>
-                                </property>
-                            </spacer>
-                        </item>
-                    </layout>
-                </item>
-                <item>
-                    <spacer name="verticalSpacer">
-                        <property name="orientation">
-                            <enum>Qt::Vertical</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                            <size>
-                                <width>20</width>
-                                <height>40</height>
-                            </size>
-                        </property>
-                    </spacer>
-                </item>
-                <item>
-                    <widget class="QScrollArea" name="scrollArea">
-                        <property name="widgetResizable">
-                            <bool>true</bool>
-                        </property>
-                        <widget class="QWidget" name="scrollAreaWidgetContents">
-                            <property name="geometry">
-                                <rect>
-                                    <x>0</x>
-                                    <y>0</y>
-                                    <width>453</width>
-                                    <height>72</height>
-                                </rect>
-                            </property>
-                            <layout class="QHBoxLayout" name="horizontalLayout">
-                                <item>
-                                    <widget class="QLabel" name="label_output">
-                                        <property name="text">
-                                            <string/>
-                                        </property>
-                                    </widget>
-                                </item>
-                            </layout>
-                        </widget>
-                    </widget>
-                </item>
-            </layout>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="checkBox_all">
+      <property name="text">
+       <string>Select All</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="title">
+         <string>North America</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QCheckBox" name="checkBox_na">
+           <property name="text">
+            <string>Select All North America</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_na_US">
+           <property name="text">
+            <string>United States</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_na_CA">
+           <property name="text">
+            <string>Canada</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_na_MX">
+           <property name="text">
+            <string>Mexico</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_na_PR">
+           <property name="text">
+            <string>Puerto Rico</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="title">
+         <string>Europe</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QCheckBox" name="checkBox_eu">
+           <property name="text">
+            <string>Select All Europe</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="0" column="0">
+            <widget class="QCheckBox" name="checkBox_eu_AT">
+             <property name="text">
+              <string>Austria</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QCheckBox" name="checkBox_eu_IT">
+             <property name="text">
+              <string>Italy</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QCheckBox" name="checkBox_eu_BE">
+             <property name="text">
+              <string>Belgium</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QCheckBox" name="checkBox_eu_LU">
+             <property name="text">
+              <string>Luxembourg</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QCheckBox" name="checkBox_eu_HR">
+             <property name="text">
+              <string>Croatia</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QCheckBox" name="checkBox_eu_NL">
+             <property name="text">
+              <string>Netherlands</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QCheckBox" name="checkBox_eu_CZ">
+             <property name="text">
+              <string>Czech</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QCheckBox" name="checkBox_eu_NO">
+             <property name="text">
+              <string>Norway</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QCheckBox" name="checkBox_eu_DK">
+             <property name="text">
+              <string>Denmark</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QCheckBox" name="checkBox_eu_PL">
+             <property name="text">
+              <string>Poland</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QCheckBox" name="checkBox_eu_FI">
+             <property name="text">
+              <string>Finnland</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QCheckBox" name="checkBox_eu_PT">
+             <property name="text">
+              <string>Portugal</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QCheckBox" name="checkBox_eu_FR">
+             <property name="text">
+              <string>France</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QCheckBox" name="checkBox_eu_RO">
+             <property name="text">
+              <string>Romania</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QCheckBox" name="checkBox_eu_DE">
+             <property name="text">
+              <string>Germany</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QCheckBox" name="checkBox_eu_SL">
+             <property name="text">
+              <string>Slovenija</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0">
+            <widget class="QCheckBox" name="checkBox_eu_GR">
+             <property name="text">
+              <string>Greece</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="QCheckBox" name="checkBox_eu_ES">
+             <property name="text">
+              <string>Spain</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="0">
+            <widget class="QCheckBox" name="checkBox_eu_HU">
+             <property name="text">
+              <string>Hungary</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="1">
+            <widget class="QCheckBox" name="checkBox_eu_SE">
+             <property name="text">
+              <string>Sweden</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="0">
+            <widget class="QCheckBox" name="checkBox_eu_IS">
+             <property name="text">
+              <string>Iceland</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="1">
+            <widget class="QCheckBox" name="checkBox_eu_CH">
+             <property name="text">
+              <string>Switzerland</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="QCheckBox" name="checkBox_eu_IE">
+             <property name="text">
+              <string>Ireland</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="1">
+            <widget class="QCheckBox" name="checkBox_eu_GB">
+             <property name="text">
+              <string>United Kingdom</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="title">
+         <string>Asia Pacific</string>
+        </property>
+        <widget class="QCheckBox" name="checkBox_apac">
+         <property name="geometry">
+          <rect>
+           <x>9</x>
+           <y>20</y>
+           <width>221</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Select All Asia and Pacific</string>
+         </property>
         </widget>
-        <widget class="QMenuBar" name="menubar">
-            <property name="geometry">
-                <rect>
-                    <x>0</x>
-                    <y>0</y>
-                    <width>479</width>
-                    <height>37</height>
-                </rect>
-            </property>
+        <widget class="QCheckBox" name="checkBox_apac_AU">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>50</y>
+           <width>221</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Australia</string>
+         </property>
         </widget>
-        <widget class="QStatusBar" name="statusbar"/>
-    </widget>
-    <resources/>
-    <connections/>
+        <widget class="QCheckBox" name="checkBox_apac_NZ">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>70</y>
+           <width>211</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>New Zealand</string>
+         </property>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QPushButton" name="pushButton_start">
+        <property name="text">
+         <string>Start</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>732</width>
+         <height>69</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="label_output">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>752</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
 </ui>
