@@ -166,7 +166,7 @@ class Ui(QMainWindow):
 
                 filesize = os.path.getsize(filename)
 
-                if filesize > 1250:
+                if filesize > 1750:
                     output_text += "Possible change in " + key + " " + model + "\n"
 
         if len(output_text) == 0:

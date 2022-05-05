@@ -167,7 +167,7 @@ class Extractor(QObject):
 
         # In case the relevant section could not be extracted, abort
         if not relevant_text:
-            print("[ERROR] Extracting the relevant text failed, aborting")
+            print("[ERROR] Extracting the relevant text for " + model + " in " + country + " failed, skipping")
             return -1
 
         self.save_file(relevant_text, model, country)
